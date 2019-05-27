@@ -1,4 +1,5 @@
 <launch>
     <include file="$(find base_control)/launch/base_control.launch"/>
     <include file="$(find robot_navigation)/launch/lidar.launch" />
+    <include file="$(find joy_control)/launch/joy_start.launch" />
 </launch>

@@ -3,17 +3,8 @@
   <arg name="slam_methods" default="gmapping" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
   <arg name="open_rviz" default="false"/>
 
-  <!-- move base -->
-  <include file="$(find robot_navigation)/launch/robot_lidar.launch"/>
-
   <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
   <include file="$(find robot_navigation)/launch/$(arg slam_methods).launch"/>
-
-  <!-- move_base -->
-  <include file="$(find robot_navigation)/launch/move_base.launch">
-  </include>
-  
-  <include file="$(find mynt_eye_ros_wrapper)/launch/mynteye.launch"/>
 
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
