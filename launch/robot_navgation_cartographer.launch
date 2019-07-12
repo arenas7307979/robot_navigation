@@ -1,0 +1,22 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="open_rviz" default="false"/>
+
+  <!-- move base -->
+  <include file="$(find robot_navigation)/launch/robot_lidar.launch"/>
+
+  <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
+  <include file="$(find cartographer_ros)/launch/rplidar_2d.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find robot_navigation)/launch/move_base.launch">
+  </include>
+  
+  <include file="$(find mynt_eye_ros_wrapper)/launch/mynteye.launch"/>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find robot_kit)/rviz/slam.rviz"/>
+  </group>
+</launch>
